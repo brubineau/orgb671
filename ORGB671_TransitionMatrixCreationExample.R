@@ -106,6 +106,7 @@ colnames(jobChange.mat) <- c(paste0("A",jobSet),"Out")
 # we do this by matrix-multiplying the jobChange.mat matrix 
 # by a diagonal matrix containing 1/(column sums from the matrix)
 y1.y2.tm <- jobChange.mat %*% diag(1/colSums(jobChange.mat,na.rm=T))
+# y1.y2.tm <- scale(jobChange.mat, center=F, scale=colSums(jobChange.mat,na.rm=T)) # alternative equivalent method
 
 table(colSums(y1.y2.tm,na.rm=T)) # check - column sums should all == 1
 
